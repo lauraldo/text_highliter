@@ -1,4 +1,4 @@
-library highlight_text;
+library text_highlighter;
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

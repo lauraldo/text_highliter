@@ -1,7 +1,7 @@
-name: highlight_text
+name: text_highlighter
 description: With this package you can highlight words and create specific styles and actions.
-version: 1.5.0
-homepage: https://github.com/desconexo/highlight_text
+version: 1.0.0
+homepage: https://github.com/lauraldo/text_highliter
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
