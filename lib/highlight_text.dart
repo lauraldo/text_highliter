@@ -1,5 +1,6 @@
 library highlight_text;
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 /// Defines what occurrence you want to highligh
@@ -18,14 +19,10 @@ enum HighlightBinding {
 class HighlightedWord {
   final TextStyle? textStyle;
   final VoidCallback? onTap;
-  final BoxDecoration? decoration;
-  final EdgeInsetsGeometry? padding;
 
   HighlightedWord({
     this.textStyle,
     this.onTap,
-    this.decoration,
-    this.padding,
   });
 }
 
@@ -44,7 +41,6 @@ class TextHighlight extends StatelessWidget {
   final StrutStyle? strutStyle;
   final bool matchCase;
   final HighlightBinding binding;
-  final PlaceholderAlignment spanAlignment;
 
   final Map<String, List<String>> originalWords = <String, List<String>>{};
 
@@ -62,7 +58,6 @@ class TextHighlight extends StatelessWidget {
     this.strutStyle,
     this.matchCase = false,
     this.binding = HighlightBinding.all,
-    this.spanAlignment = PlaceholderAlignment.middle,
   });
 
   @override
@@ -224,19 +219,11 @@ class TextHighlight extends StatelessWidget {
 
         return TextSpan(
           children: [
-            WidgetSpan(
-              alignment: spanAlignment,
-              child: GestureDetector(
-                onTap: words[currentWord]!.onTap ?? () {},
-                child: Container(
-                  padding: words[currentWord]!.padding,
-                  decoration: words[currentWord]!.decoration,
-                  child: Text(
-                    showWord,
-                    style: words[currentWord]!.textStyle ?? textStyle,
-                  ),
-                ),
-              ),
+            TextSpan(
+              text: showWord,
+              style: words[currentWord]!.textStyle ?? textStyle,
+              recognizer: TapGestureRecognizer()
+                ..onTap = words[currentWord]!.onTap ?? () {},
             ),
             _buildSpan(boundWords),
           ],
