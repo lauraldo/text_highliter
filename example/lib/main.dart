@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:highlight_text/highlight_text.dart';
+import 'package:text_highlighter/text_highlighter.dart';
 
 void main() {
   runApp(MaterialApp(home: HomePage()));
@@ -14,16 +14,10 @@ class _HomePageState extends State<HomePage> {
   final String text =
       "Flutter is an open-source mobile application development framework created by Google. It is used to develop applications for Android and iOS, as well as being the primary method of creating applications for Google Fuchsia.";
 
-  final EdgeInsetsGeometry padding = EdgeInsets.all(8.0);
-
-  final BoxDecoration decoration = BoxDecoration(
-    color: Colors.green,
-    borderRadius: BorderRadius.circular(50),
-  );
-
   final TextStyle textStyle = TextStyle(
     color: Colors.red,
     fontSize: 14.0,
+    backgroundColor: Colors.yellow,
   );
 
   late Map<String, HighlightedWord> words;
@@ -54,8 +48,6 @@ class _HomePageState extends State<HomePage> {
               });
         },
         textStyle: textStyle,
-        decoration: decoration,
-        padding: padding,
       ),
       "open-source": HighlightedWord(
         onTap: () {
@@ -100,8 +92,6 @@ class _HomePageState extends State<HomePage> {
               });
         },
         textStyle: textStyle,
-        decoration: decoration,
-        padding: padding,
       ),
       "iOS": HighlightedWord(
         onTap: () {
@@ -168,8 +158,6 @@ class _HomePageState extends State<HomePage> {
               });
         },
         textStyle: textStyle,
-        decoration: decoration,
-        padding: padding,
       ),
       "development framework": HighlightedWord(
         onTap: () {
